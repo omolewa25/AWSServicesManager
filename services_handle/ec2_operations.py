@@ -3,6 +3,7 @@ from botocore.exceptions import ClientError
 from datetime import datetime
 
 from services_handle.logger.loggings import Logger
+from services_handle.get_credentials import credentials
 
 
 class EC2Handler:
@@ -12,6 +13,13 @@ class EC2Handler:
 
         :param logger: An instance of the Logger class for logging EC2 actions
         """
+        creds = credentials()
+        self.ec2 = boto3.client(
+            "ec2",
+            aws_access_key_id=creds.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=creds.AWS_SECRET_ACCESS_KEY,
+            region_name=creds.AWS_REGION
+        )
         self.ec2 = boto3.client('ec2')
         self.logger = logger.get_logger()
 
