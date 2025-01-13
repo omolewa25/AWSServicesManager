@@ -1,7 +1,7 @@
 
-from s3manager.s3_operations import *
+from services_handle.s3_operations import *
 
-from s3manager.s3_operations import download_file
+from services_handle.s3_operations import download_file
 create_bucket("esther2026")
 upload_file("/Users/ihc/Downloads/Losss.png", "esther2025")
 
